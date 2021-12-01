@@ -4,6 +4,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -11,7 +16,28 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals( 4, 2 + 2 );
+    public void TestCountChars1() {
+        final String givenString = "sdfsdf";
+
+        final Integer expectedResult = 6;
+        final Integer actualResult = TextCounter.getCharsCount( givenString );
+
+        assertEquals(expectedResult, actualResult);
+        }
+
+    @Test
+    public void TestCountChars2() {
+        final String givenString = "";
+
+        final Integer expectedResult = 0;
+        final Integer actualResult = TextCounter.getCharsCount( givenString );
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void TestCountChars3() {
+        final String givenString = null;
+        final Integer actualResult = TextCounter.getCharsCount( givenString );
     }
 }
